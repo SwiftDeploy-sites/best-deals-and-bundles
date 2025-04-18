@@ -1,0 +1,474 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Best Deals and Bundles – Honest Product Reviews & Saved Money Community</title>
+  <link rel="icon" href="" type="image/png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f6f1fa;
+      color: #251134;
+      margin: 0;
+      padding: 0;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #6d28d9;
+      color: #fff;
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid #eee;
+    }
+    .logo {
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: #a78bfa;
+    }
+    .nav-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .desktop-nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background-color: #6d28d9;
+      color: #fff;
+      border: 1px solid #ddd;
+      padding: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+    }
+    .mobile-nav.show {
+      display: flex;
+    }
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #a78bfa;
+    }
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: block;
+      }
+      .desktop-nav {
+        display: none;
+      }
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem;
+    }
+    header {
+      text-align: center;
+      padding: 4rem 1rem 2rem;
+    }
+    h1 {
+      font-size: 2.75rem;
+      color: #a78bfa;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+    p {
+      font-size: 1.125rem;
+      line-height: 1.6;
+    }
+    .section {
+      background-color: #ece7f6;
+      color: #27114a;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      margin-top: 3rem;
+    }
+    .section-heading {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      color: #a78bfa;
+    }
+    ul {
+      padding-left: 1.5rem;
+    }
+    blockquote {
+      font-style: italic;
+      margin: 1rem 0;
+      padding-left: 1rem;
+      border-left: 4px solid #a78bfa;
+      color: #555;
+    }
+    .cta-buttons {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .cta-buttons a {
+      display: inline-flex;
+      align-items: center;
+      background: #6d28d9;
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.13rem;
+      padding: 0.9rem 2rem;
+      border-radius: 40px;
+      text-decoration: none;
+      box-shadow: 0 2px 5px rgba(169, 139, 250, 0.07);
+      transition: background 0.24s, color 0.24s, box-shadow 0.24s;
+      border: none;
+      gap: 0.7rem;
+    }
+    .cta-buttons a:hover {
+      background: #5b21b6;
+      color: #ffffff;
+      box-shadow: 0 6px 16px rgba(169, 139, 250, 0.17);
+    }
+    .social-icons {
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .social-icons a {
+      color: #6d28d9;
+      background: #ede7fb;
+      margin: 0 0.8rem;
+      font-size: 2rem;
+      border-radius: 50%;
+      padding: 0.4rem 0.5rem 0.3rem 0.5rem;
+      transition: color 0.2s, background 0.2s;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .social-icons a:hover {
+      color: #fff;
+      background: #6d28d9;
+    }
+
+    /* Scroll to Top */
+    #scrollToTopBtn {
+      display: none;
+      position: fixed;
+      bottom: 36px;
+      right: 36px;
+      z-index: 100;
+      width: 45px;
+      height: 45px;
+      background: #6d28d9;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(106,40,217,0.12);
+      cursor: pointer;
+      font-size: 1.7rem;
+      opacity: 0.92;
+      transition: background 0.2s, opacity 0.2s;
+    }
+    #scrollToTopBtn:hover {
+      background: #5b21b6;
+      opacity: 1;
+    }
+    @media (max-width: 600px) {
+      #scrollToTopBtn {
+        right: 16px;
+        bottom: 16px;
+        width: 38px;
+        height: 38px;
+        font-size: 1.23rem;
+      }
+      .container {
+        padding: 1rem;
+      }
+      .cta-buttons {
+        flex-direction: column;
+        gap: 0.9rem;
+      }
+    }
+    footer {
+      padding: 2rem;
+      background-color: #442484;
+      color: #efebfa;
+    }
+    .footer-columns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .footer-columns div {
+      min-width: 200px;
+      margin-bottom: 1rem;
+    }
+    .footer-columns a {
+      color: #a78bfa;
+      text-decoration: none;
+      margin-right: 10px;
+    }
+    footer a {
+      color: inherit;
+      text-decoration: none;
+    }
+    footer a:hover {
+      color: inherit;
+      text-decoration: underline;
+    }
+  </style>
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById("navLinks");
+      navLinks.classList.toggle("show");
+    }
+  </script>
+</head>
+<body>
+  <nav>
+    <div class="logo" id="logo-container">
+      
+    </div>
+
+   
+</div>
+
+    <div class="nav-toggle" onclick="toggleMenu()">☰</div>
+    <div class="desktop-nav">
+      <a href="#services">What We Do</a>
+      <a href="#about">About</a>
+      <a href="#join">Join & Subscribe</a>
+    </div>
+    <div class="mobile-nav" id="navLinks">
+      <a href="#services">What We Do</a>
+      <a href="#about">About</a>
+      <a href="#join">Join & Subscribe</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <header>
+      <h1>Welcome to Best Deals and Bundles</h1>
+      <p>
+        Unleashing savings and honest product insights for smart shoppers! <strong>Best Deals and Bundles</strong> is your trusted home for <strong>exclusive sales</strong>, <strong>product reviews</strong>, and a fun community all dedicated to <strong>helping you make the most of your money</strong>. Whether you're an everyday deal hunter or just want honest opinions before your next purchase, our <strong>Facebook Group</strong> and <strong>YouTube Channel</strong> are your gateway to savvy shopping and real reviews!
+      </p>
+    </header>
+
+    <section class="section" id="services">
+      <h2 class="section-heading">What We Offer</h2>
+      <ul>
+        <li>
+          <strong>Curated Deals and Savings:</strong> Our lively <a href="https://www.facebook.com/groups/bestdealsandbundles" target="_blank" rel="noopener"><strong>Facebook Group</strong></a> is updated daily with amazing discounts, exclusive bundles, and <strong>limited-time offers</strong> across a wide range of products. From household essentials to tech and fashion, we find, vet, and share <strong>hand-picked deals</strong> perfect for stretching your budget.
+        </li>
+        <li>
+          <strong>Unbiased Product Reviews:</strong> On our <a href="https://www.youtube.com/channel/UCRDqU9GSefFZkuD_hnBmSJw" target="_blank" rel="noopener"><strong>YouTube channel</strong></a>, discover in-depth product reviews with <strong>complete honesty—even if the experience isn’t positive!</strong> Our mission is to give you the facts and personal opinions needed to make informed buying decisions.
+        </li>
+        <li>
+          <strong>Community Driven Advice & Tips:</strong> Join discussions, ask for advice, and take part in a supportive group of fellow bargain hunters. Whether you’re after <strong>the hottest Amazon finds</strong>, coupon strategies, or just want to share your own reviews, our platforms are welcoming, interactive, and always upbeat.
+        </li>
+      </ul>
+    </section>
+
+    <section class="section" id="about">
+      <h2 class="section-heading">About Best Deals and Bundles</h2>
+      <p>
+        <strong>Best Deals and Bundles</strong> was created with a simple mission: <strong>help real people save money and make smarter purchases</strong>—every day! What started as a passion project to find the best deals online and offline has grown into a vibrant online community.
+      </p>
+      <p>
+        Our founder manages a thriving <a href="https://www.facebook.com/groups/bestdealsandbundles" target="_blank" rel="noopener"><strong>Facebook group</strong></a> where members get early access to today’s best discounts, savings challenges, and exclusive giveaways. As an extension, the <a href="https://www.youtube.com/channel/UCRDqU9GSefFZkuD_hnBmSJw" target="_blank" rel="noopener"><strong>YouTube channel</strong></a> provides in-depth reviews covering everything from gadgets and electronics to home, beauty, and personal finance tools.
+      </p>
+      <p>
+        <strong>Integrity and honesty are at the core</strong> of our content. Unlike some sources that only focus on positives or push sponsored products, we believe that <strong>transparency and candid feedback</strong> matter most. Our reviews are honest—even when that means revealing flaws or negative experiences—so you can shop smarter without regret.
+      </p>
+      <p>
+        Members value our:
+        <ul>
+          <li><strong>No-pressure atmosphere</strong>—there’s never any obligation to buy, just the chance to benefit from <strong>genuine opportunities</strong>.</li>
+          <li><strong>Diverse range of deals</strong>—from everyday groceries to luxury goods, everyone finds something unique.</li>
+          <li><strong>Active and welcoming community</strong>—a place where you can ask questions and get honest answers from real people.</li>
+        </ul>
+      </p>
+      <p>
+        Whether you <strong>love hunting bargains</strong> or simply want reliable product feedback, you’re invited to connect, grow, and <strong>save with Best Deals and Bundles</strong>!
+      </p>
+    </section>
+
+    <section class="section" id="join">
+      <h2 class="section-heading">Join Our Community & Subscribe!</h2>
+      <p>
+        If you value honesty, want to <strong>save more with exclusive deals</strong>, and crave a friendly place to discuss your best (and worst!) purchases, you’re in the right spot.
+      </p>
+      <div class="cta-buttons">
+        <a href="https://www.youtube.com/channel/UCRDqU9GSefFZkuD_hnBmSJw" target="_blank" rel="noopener"><i class="fab fa-youtube"></i> Subscribe on YouTube</a>
+        <a href="https://www.facebook.com/groups/bestdealsandbundles" target="_blank" rel="noopener"><i class="fab fa-facebook"></i> Join on Facebook</a>
+      </div>
+      <p style="margin-top:2rem;">
+        <strong>Subscribe to our YouTube channel</strong> for the latest product reviews, unboxings, and real-world use tests—helping you make smart choices before you buy.
+        <br>
+        <strong>Join the Facebook group</strong> for real-time deals, savings tips, and member-only conversations. Share your own experiences, ask questions, and watch your <strong>savings grow</strong>!
+      </p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/groups/bestdealsandbundles" target="_blank" aria-label="Facebook Group"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.youtube.com/channel/UCRDqU9GSefFZkuD_hnBmSJw" target="_blank" aria-label="YouTube Channel"><i class="fab fa-youtube"></i></a>
+      </div>
+    </section>
+
+    <section class="section" id="honesty">
+      <h2 class="section-heading">Why Honesty Matters in Reviews</h2>
+      <p>
+        In a world crowded with <strong>influencers</strong> and <strong>sponsored posts</strong>, it can be hard to know which product feedback you can trust. At <strong>Best Deals and Bundles</strong>, our motto is simple: <em>Say it as it is!</em>
+      </p>
+      <p>
+        When we try a product—whether it’s a top-rated gadget or a niche cleaning supply—we put it through real-life tests and share the results. <strong>You’ll hear the pros and the cons, the wins and the fails</strong>. If we love something, you’ll know! If something falls short, we’ll explain why, honestly and respectfully.
+      </p>
+      <p>
+        <strong>Our community is built on trust</strong>. We believe in helping our members make purchases that are right for their lives and budgets. That’s why our followers come back, time and again—to find deals they can depend on, and reviews that aren't sugarcoated.
+      </p>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <button onclick="window.scrollTo({top:0, behavior:'smooth'});" id="scrollToTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- Dynamic Footer -->
+    <footer>
+      <div id="footer-container"></div>
+    </footer>
+  </div>
+  <script>
+    // Example dynamic data (you’ll replace this with actual values using Make)
+    const data = {
+      logosubmitted: "",
+      footer_type: "",
+      email: "",
+      phone_display: "",
+      phone_raw: "",
+      facebook: "https://www.facebook.com/groups/bestdealsandbundles",
+      instagram: "",
+      twitter: "",
+      linkedin: "",
+      youtube: "https://www.youtube.com/channel/UCRDqU9GSefFZkuD_hnBmSJw",
+      address: "",
+      encoded_address: ""
+    };
+    Object.keys(data).forEach(key => {
+    if (data[key] === null || data[key] === "null" || typeof data[key] !== "string" || data[key].trim().startsWith("~")) {
+      data[key] = "";
+    }
+    });
+    // Inject logo or business name
+    const logoContainer = document.getElementById("logo-container");
+    if (data.logosubmitted && data.logosubmitted !== "") {
+      logoContainer.innerHTML = `<a href="#"><img src="${data.logosubmitted}" alt="Best Deals and Bundles logo" style="max-height: 40px;"></a>`;
+    } else {
+      logoContainer.innerHTML = `<a href="#">Best Deals and Bundles</a>`;
+    }
+
+    if (data.address !== "" && data.encoded_address !== ""){
+      data.footer_type = "map";
+    }
+    else if (data.phone_raw !== "" && data.phone_display !== ""){
+      data.footer_type = "two-column";
+    }
+    else{
+      data.footer_type = "simple";
+    }
+    // Render footer based on footer_type
+    const footer = document.getElementById("footer-container");
+    if (data.footer_type === "simple") {
+      footer.innerHTML = `&copy; 2025 Best Deals and Bundles | Powered by <a href="http://swiftdeploy.com" target="_blank">SwiftDeploy</a> from <a href="https://buddertech.com" target="_blank">Budder Technology</a>`;
+    }
+    else if (data.footer_type === "two-column") {
+      footer.innerHTML = `
+       <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem;">
+          <div style="flex: 1; min-width: 200px;">
+            &copy; 2025 Best Deals and Bundles | Powered by <a href="http://swiftdeploy.com" target="_blank">SwiftDeploy</a> from <a href="https://buddertech.com" target="_blank">Budder Technology</a>
+          </div>
+          <div style="flex: 1; min-width: 200px;">
+            ${data.email ? `Email: <a href="mailto:${data.email}" target="_blank">${data.email}</a><br>` : ""}
+            ${data.phone_display ? `Phone: <a href="tel:${data.phone_raw}" target="_blank">${data.phone_display}</a>` : ""}
+            <div style="margin-top: 0.5rem;">
+              ${data.facebook ? `<a href="${data.facebook}" target="_blank"><i class="fab fa-facebook"></i></a>` : ""}
+              ${data.instagram ? `<a href="${data.instagram}" target="_blank"><i class="fab fa-instagram"></i></a>` : ""}
+              ${data.twitter ? `<a href="${data.twitter}" target="_blank"><i class="fab fa-twitter"></i></a>` : ""}
+              ${data.linkedin ? `<a href="${data.linkedin}" target="_blank"><i class="fab fa-linkedin"></i></a>` : ""}
+              ${data.youtube ? `<a href="${data.youtube}" target="_blank"><i class="fab fa-youtube"></i></a>` : ""}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+    else if (data.footer_type === "map") {
+      footer.innerHTML = `
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem;">
+          <div style="flex: 1; min-width: 200px;">
+            &copy; 2025 Best Deals and Bundles | Powered by <a href="http://swiftdeploy.com" target="_blank">SwiftDeploy</a> from <a href="https://buddertech.com" target="_blank">Budder Technology</a>
+          </div>
+          <div style="flex: 1; min-width: 200px;">
+            ${data.email ? `Email: <a href="mailto:${data.email}" target="_blank">${data.email}</a><br>` : ""}
+            ${data.phone_display ? `Phone: <a href="tel:${data.phone_raw}" target="_blank">${data.phone_display}</a>` : ""}
+            <div style="margin-top: 0.5rem;">
+              ${data.facebook ? `<a href="${data.facebook}" target="_blank"><i class="fab fa-facebook"></i></a>` : ""}
+              ${data.instagram ? `<a href="${data.instagram}" target="_blank"><i class="fab fa-instagram"></i></a>` : ""}
+              ${data.twitter ? `<a href="${data.twitter}" target="_blank"><i class="fab fa-twitter"></i></a>` : ""}
+              ${data.linkedin ? `<a href="${data.linkedin}" target="_blank"><i class="fab fa-linkedin"></i></a>` : ""}
+              ${data.youtube ? `<a href="${data.youtube}" target="_blank"><i class="fab fa-youtube"></i></a>` : ""}
+            </div>
+          </div>
+          <div style="flex: 1; min-width: 200px;">
+            ${data.address ? `<p>${data.address}</p>` : ""}
+            <iframe
+              width="100%" height="200"
+              frameborder="0" style="border:0"
+              src="https://www.google.com/maps?q=${data.encoded_address}&output=embed"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      `;
+    }
+    // Scroll-to-top button logic
+    window.addEventListener('scroll', function() {
+      let scroller = document.getElementById('scrollToTopBtn');
+      if(!scroller) return;
+      if (document.body.scrollTop > 260 || document.documentElement.scrollTop > 260) {
+        scroller.style.display = 'block';
+      } else {
+        scroller.style.display = 'none';
+      }
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+    const navToggle = document.querySelector(".nav-toggle");
+    const mobileNav = document.getElementById("navLinks");
+
+    // 1. Close nav on link click
+    mobileNav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileNav.classList.remove("show");
+      });
+    });
+
+    // 2. Close nav if clicking outside it
+    document.addEventListener("click", function (event) {
+      const isClickInsideNav = mobileNav.contains(event.target) || navToggle.contains(event.target);
+      if (!isClickInsideNav && mobileNav.classList.contains("show")) {
+        mobileNav.classList.remove("show");
+      }
+    });
+  });
+  </script>
+</body>
+</html>
